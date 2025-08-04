@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetri Dental Clinic - Ramanathapuram Dental Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3460',
+                        secondary: '#E94560'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        .appointment-form input::-webkit-outer-spin-button,
+        .appointment-form input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-white min-h-screen">
+
+    <!-- Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 bg-white flex items-center justify-center z-50 transition-opacity duration-500">
+        <div class="flex items-center justify-center">
+
+            <img src="logo.png" alt="Vetri Logo" class="w-42 h-32 mr-4 object-contain" />
+
+            <!-- Text "Vetri Dental Clinic" -->
+            <h1 class="text-3xl md:text-5xl font-bold text-primary font-[Pacifico]">
+                Vetri <span class="text-pink-700">Dental <span class="text-primary">Clinic</span></span>
+            </h1>
+        </div>
+
+        <!-- Loader -->
+        <div class="w-12 h-12 border-4 border-pink-700 border-dashed rounded-full animate-spin mt-8 absolute bottom-10">
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+
+                    <!--Logo-->
+                    <img src="logo.png" alt="Clinic Logo" class="w-10 h-10 mr-3 rounded-full">
+
+
+                    <h1 class="text-3xl font-['Pacifico'] text-primary">Vetri <span class="text-pink-700">Dental <span
+                                class="text-primary">Clinic</span></span></h1>
+                    <nav class="hidden md:flex ml-12 space-x-8">
+                        <a href="#" class="text-primary hover:text-pink-700 cursor-pointer">Home</a>
+                        <a href="#services" class="text-primary hover:text-pink-700 cursor-pointer">Services</a>
+                        <a href="#team" class="text-primary hover:text-pink-700 cursor-pointer">Our Team</a>
+                        <a href="#contact" class="text-primary hover:text-pink-700 cursor-pointer">Contact</a>
+
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="hidden md:flex items-center">
+                        <i class="ri-phone-fill text-pink-700 ri-lg"></i>
+                        <span class="ml-2 text-primary hover:text-pink-700">Emergency: (+91)
+                            86667754551,9345659720</span>
+                    </div>
+                    <button onclick="openAppointmentModal()"
+                        class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-pink-700 cursor-pointer whitespace-nowrap">
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <!-- HOME -->
+        <section class="relative pt-20 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="home-bg.jpg" class="w-full h-full object-cover object-top opacity-20">
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="flex flex-col md:flex-row items-center py-20">
+                    <div class="w-full md:w-1/2 mb-12 md:mb-0">
+                        <h2 class="text-5xl font-bold text-primary mb-6 hover:text-pink-700">Experience Excellence in
+                            Dental Care</h2>
+                        <p class="text-xl text-gray-700 mb-8">We combine advanced technology with compassionate care to
+                            deliver the highest quality dental services. Your smile is our priority.</p>
+                        <button onclick="openAppointmentModal()"
+                            class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-pink-700 text-lg cursor-pointer whitespace-nowrap">
+                            Schedule Your Visit
+                        </button>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <img src="home-doc.jpg" class="rounded-lg shadow-xl w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            @keyframes scrollLeft {
+                0% {
+                    transform: translateX(100%);
+                }
+
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+
+            .animate-marquee {
+                animation: scrollLeft 30s linear infinite;
+            }
+
+            /* Fade in animation */
+            .fade-in {
+                opacity: 0;
+                transform: scale(0.95);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .group:hover .fade-in {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+
+        <!-- Google Reviews -->
+        <div class="w-full overflow-hidden bg-gray-100 py-10">
+            <div class="flex gap-20 animate-marquee whitespace-nowrap items-start">
+
+                <!-- Review Card 1 -->
+                <div class="w-96 shrink-0 group relative">
+                    <div
+                        class="bg-white px-6 py-4 rounded-lg shadow-md h-24 overflow-hidden transition-all duration-300 relative z-10">
+                        <p class="text-sm text-gray-700 truncate">
+                            "Amazing dental service! So friendly and professional..."
+                        </p>
+                        <div class="mt-2">
+                            <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                            <p class="text-xs text-gray-500">- Priya M.</p>
+                        </div>
+
+                        <!-- Popup Card -->
+                        <div
+                            class="absolute top-0 left-0 w-96 bg-white rounded-xl shadow-2xl p-6 fade-in z-50 hidden group-hover:block">
+                            <p class="text-sm text-gray-700">
+                                "Amazing dental service! So friendly and professional. The doctors are kind and explain
+                                everything clearly. One of the best clinics I’ve visited! Highly recommend for families
+                                with kids as well!"
+                            </p>
+                            <div class="mt-3">
+                                <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                                <p class="text-xs text-gray-500">- Priya M.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="w-96 shrink-0 group relative">
+                    <div
+                        class="bg-white px-6 py-4 rounded-lg shadow-md h-24 overflow-hidden transition-all duration-300 relative z-10">
+                        <p class="text-sm text-gray-700 truncate">
+                            "Staff were super friendly. Great ambience and comfort..."
+                        </p>
+                        <div class="mt-2">
+                            <div class="flex text-yellow-500 text-sm">★★★★☆</div>
+                            <p class="text-xs text-gray-500">- Karthik R.</p>
+                        </div>
+
+                        <!-- Popup Card -->
+                        <div
+                            class="absolute top-0 left-0 w-96 bg-white rounded-xl shadow-2xl p-6 fade-in z-50 hidden group-hover:block">
+                            <p class="text-sm text-gray-700">
+                                "The staff here is incredibly friendly and welcoming. They ensured I was at ease
+                                throughout the process. Definitely a top-class dental studio in town."
+                            </p>
+                            <div class="mt-3">
+                                <div class="flex text-yellow-500 text-sm">★★★★☆</div>
+                                <p class="text-xs text-gray-500">- Karthik R.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="w-96 shrink-0 group relative">
+                    <div
+                        class="bg-white px-6 py-4 rounded-lg shadow-md h-24 overflow-hidden transition-all duration-300 relative z-10">
+                        <p class="text-sm text-gray-700 truncate">
+                            "Clean, modern clinic with amazing service. Very happy..."
+                        </p>
+                        <div class="mt-2">
+                            <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                            <p class="text-xs text-gray-500">- Meena D.</p>
+                        </div>
+
+                        <!-- Popup Card -->
+                        <div
+                            class="absolute top-0 left-0 w-96 bg-white rounded-xl shadow-2xl p-6 fade-in z-50 hidden group-hover:block">
+                            <p class="text-sm text-gray-700">
+                                "Affordable and excellent treatment quality. The equipment was modern
+                                !"
+                            </p>
+                            <div class="mt-3">
+                                <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                                <p class="text-xs text-gray-500">- Meena D.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="w-96 shrink-0 group relative">
+                    <div
+                        class="bg-white px-6 py-4 rounded-lg shadow-md h-24 overflow-hidden transition-all duration-300 relative z-10">
+                        <p class="text-sm text-gray-700 truncate">
+                            "very nice super ..."
+                        </p>
+                        <div class="mt-2">
+                            <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                            <p class="text-xs text-gray-500">- Trisha D.</p>
+                        </div>
+
+                        <!-- Popup Card -->
+                        <div
+                            class="absolute top-0 left-0 w-96 bg-white rounded-xl shadow-2xl p-6 fade-in z-50 hidden group-hover:block">
+                            <p class="text-sm text-gray-700">
+                                "The equipment was modern, and the ambiance
+                                is clean.
+                            </p>
+                            <div class="mt-3">
+                                <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                                <p class="text-xs text-gray-500">- Trisha D.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="w-96 shrink-0 group relative">
+                    <div
+                        class="bg-white px-6 py-4 rounded-lg shadow-md h-24 overflow-hidden transition-all duration-300 relative z-10">
+                        <p class="text-sm text-gray-700 truncate">
+                            " You feel relaxed the moment you walk in!"
+                        </p>
+                        <div class="mt-2">
+                            <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                            <p class="text-xs text-gray-500">- Meena D.</p>
+                        </div>
+
+                        <!-- Popup Card -->
+                        <div
+                            class="absolute top-0 left-0 w-96 bg-white rounded-xl shadow-2xl p-6 fade-in z-50 hidden group-hover:block">
+                            <p class="text-sm text-gray-700">
+                                "staff are very gentle and friendly!"
+                            </p>
+                            <div class="mt-3">
+                                <div class="flex text-yellow-500 text-sm">★★★★★</div>
+                                <p class="text-xs text-gray-500">- Meena D.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- Services -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-primary-900 text-primary mb-12">
+                    Our <span class="text-pink-700">Services</span>
+                </h2>
+
+                <!-- Modal Backdrop -->
+                <div id="modalBackdrop" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+                <!-- Modal Card -->
+                <div id="modalCard" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    bg-white rounded-lg shadow-xl w-[90%] max-w-2xl p-6 z-50 hidden">
+                    <h2 id="modalTitle" class="text-2xl font-bold text-pink-700 mb-4">Title</h2>
+                    <p id="modalDescription" class="text-gray-700 mb-4">Description goes here...</p>
+
+                    <!-- Before & After Images -->
+                    <div id="modalImages" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 hidden">
+                        <div class="text-center">
+                            <p class="font-semibold text-sm text-gray-600 mb-1">Before</p>
+                            <img id="beforeImage" src="male.jpg" alt="Before Image"
+                                class="rounded shadow-md mx-auto max-h-60 object-contain" />
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold text-sm text-gray-600 mb-1">After</p>
+                            <img id="afterImage" src="female.jpg" alt="After Image"
+                                class="rounded shadow-md mx-auto max-h-60 object-contain" />
+                        </div>
+                    </div>
+
+                    <button onclick="closeModal()"
+                        class="mt-4 px-4 py-2 bg-pink-700 text-white rounded hover:bg-primary">
+                        Close
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-heart-pulse-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Restorative
+                            Dentistry</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">It repair and save a badly damaged or
+                            infected tooth.</p>
+                        <a onclick="openModal(
+                                'Restorative Dentistry',
+                                'Restorative dentistry focuses on repairing or replacing damaged teeth. This includes fillings, crowns, bridges, implants, and root canals.',
+                                'images/Restorative-before.jpeg',
+                                'images/Restorative-after.jpeg'
+                            )" class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More
+                            →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-smile-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Orthodontics</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">Straighten your teeth with modern braces and
+                            clear aligners.</p>
+                        <a onclick="openModal(
+                                'Orthodontics',
+                                'Orthodontics involves correcting misaligned teeth and jaws using braces or clear aligners. It improves both function and appearance.',
+                                'images/ortho-before.jpeg',
+                                'images/ortho-after.jpeg'
+                            )" class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More
+                            →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-scissors-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Prosthodontics</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">Restore missing teeth with permanent,
+                            natural-looking implants.</p>
+                        <a onclick="openModal('Prosthodontics', 'Prosthodontics focuses on designing and fitting artificial replacements for teeth and other parts of the mouth. This includes dentures, crowns, bridges, and implants.',
+                                'images/Prostho-before.jpeg',
+                                'images/Prostho-after.jpg')"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-service-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Pedondontics</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">Protective and preventive applications from
+                            dental caries for child.</p>
+                        <a onclick="openModal('Pedondontics', 'Pedodontics or pediatric dentistry deals with the care of children’s teeth. It includes preventive care, cavity treatment, and guidance of dental growth.',
+                                'images/Pedo-before.jpg',
+                                'images/Pedo-after.jpg' )"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-stethoscope-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Oral and
+                            Maxillofacial Surgery</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">Reconstructive surgery of the face, facial
+                            trauma surgery and the oral cavity.</p>
+                        <a onclick="openModal('Oral and Maxillofacial Surgery', 
+                        'This specialty includes surgical treatments for diseases, injuries, and defects in the head, neck, face, jaws and the hard and soft tissues of the oral and maxillofacial region.',
+                                'images/Maxillofacial-before.jpg',
+                                'images/Maxillofacial-before.jpg' )"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-tooth-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Peridontics</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">Surgical procedures for extractions and jaw
+                            corrections.</p>
+                        <a onclick="openModal('Peridontics', 
+                        'Periodontics deals with the prevention, diagnosis, and treatment of periodontal (gum) disease and in the placement of dental implants.',
+                                'images/Peridon-before.jpg',
+                                'images/Peridon-after.jpg')"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-user-heart-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Aesthetic Dentistry
+                        </h3>
+                        <p class="text-primary mb-4 group-hover:text-white">It is necessary or elective dentistry done
+                            with cosmetic materials.</p>
+                        <a onclick="openModal('Aesthetic Dentistry',
+                         'Aesthetic dentistry focuses on improving the appearance of your teeth, gums and bite. It includes procedures like teeth whitening, veneers, and bonding.',
+                                'images/Aesthetic-before.jpg',
+                                'images/Aesthetic-after.jpg')"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-sm transition duration-300 hover:bg-pink-700 hover:text-white group">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white">
+                            <i class="ri-medicine-bottle-line text-primary ri-2x group-hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-pink-700 group-hover:text-white">Dental Bonding</h3>
+                        <p class="text-primary mb-4 group-hover:text-white">It uses a tooth-colored composite resin
+                            material to enhance your smile.</p>
+                        <a onclick="openModal('Dental Bonding', 
+                        'Dental bonding is a cosmetic procedure that uses a tooth-colored composite resin to repair a decayed, chipped, fractured or discolored tooth.',
+                                'images/Dental-before.jpg',
+                                'images/Dental-after.jpg')"
+                            class="text-primary hover:text-white cursor-pointer group-hover:underline">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Choose Us -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 ">
+                <h2 class="text-4xl font-bold text-center text-primary mb-12">Why <span class="text-pink-700"> Choose
+                        <span class="text-primary"> Us </span></span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="ri-medal-line text-primary ri-2x hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary hover:text-pink-700">4+ Years Experience
+                        </h3>
+                        <p class="text-gray-600">Trusted by thousands of patients with decades of proven expertise.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="ri-computer-line text-primary ri-2x hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary hover:text-pink-700">Latest Technology
+                        </h3>
+                        <p class="text-gray-600">State-of-the-art equipment and advanced dental procedures.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="ri-heart-line text-primary ri-2x hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary hover:text-pink-700">Patient-First
+                            Approach
+                        </h3>
+                        <p class="text-gray-600">Comfortable, personalized care tailored to your needs.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="ri-time-line text-primary ri-2x hover:text-pink-700"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary hover:text-pink-700">Flexible Time
+                        </h3>
+                        <p class="text-gray-600">Book appointments at your convenient time. We’re here when you need us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Team -->
+        <section id="team" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-primary mb-10">
+                    Meet <span class="text-pink-700">Our Expert</span> <span class="text-primary">Team</span>
+                </h2>
+
+                <div class="flex flex-wrap justify-center gap-12">
+
+                    <div class="w-80 bg-primary rounded-lg overflow-hidden shadow-lg group transition duration-300">
+                        <div class="w-full h-60 bg-white flex justify-center items-center">
+                            <img src="vetri.jpeg"
+                                class="max-h-full max-w-full object-contain transform transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <div class="p-4 bg-primary group-hover:bg-pink-700 transition duration-300">
+                            <h3 class="text-lg font-semibold mb-1 text-white">Dr. E. SaravanaKumar</h3>
+                            <p class="text-sm text-white mb-2">Lead Dentist, Dental Surgeon</p>
+                            <p class="text-xs text-white">BDS, KSR Dental College of Tiruchengode</p>
+                        </div>
+                    </div>
+
+                    <div class="w-80 bg-primary rounded-lg overflow-hidden shadow-lg group transition duration-300">
+                        <div class="w-full h-60 bg-white flex justify-center items-center">
+                            <img src="menaga.jpeg"
+                                class="max-h-full max-w-full object-contain transform transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <div class="p-4 bg-primary group-hover:bg-pink-700 transition duration-300">
+                            <h3 class="text-lg font-semibold mb-1 text-white">Dr. M. Menaga</h3>
+                            <p class="text-sm text-white mb-2">Dental Surgeon</p>
+                            <p class="text-xs text-white">BDS, Ramakrishna Dental College of Coimbatore</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Location -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-8 text-primary">Visit <span class="text-pink-700">Our
+                            </span><span class="text-primary">Clinic</span> </h2>
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold mb-4 text-primary hover:text-pink-700  cursor-pointer">
+                                Ramanathapuram Clinic</h3>
+
+                            <div class="space-y-2 text-gray-600">
+                                <p><i class="ri-map-pin-line text-pink-700"></i> No.102,Salai Street,Opp to
+                                    Thangamayil
+                                    Jewellery,Ramanathapuram</p>
+                                <p><i class="ri-phone-line text-pink-700"></i> (+91) 8667754551</p>
+                                <p><i class="ri-mail-line text-pink-700"></i> vetridentalclinic22@gmail.com</p>
+                            </div>
+
+                            <div class="space-y-2 text-gray-600">
+                                <p><i class="ri-time-line text-pink-700 text-xl"></i>Monday - Saturday: Morning
+                                    10:00 AM
+                                    - 02:00 PM, Evening 02:00 PM - 07:30 PM</p>
+                                <p><i class="ri-calendar-check-line text-pink-700 text-xl"></i>Sunday: Open only for
+                                    Appoinment</p>
+                            </div>
+
+                            <!-- Visit Button -->
+                            <div class="mt-4">
+                                <a href="https://www.google.com/maps?q=No.102,+Salai+Street,+Opp+to+Thangamayil+Jewellery,+Ramanathapuram"
+                                    target="_blank"
+                                    class="inline-block bg-primary text-white px-8 py-2 rounded hover:bg-pink-700 transition duration-300">
+                                    Visit
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold mb-4 text-primary hover:text-pink-700  cursor-pointer ">
+                                Regunathapuram Clinic</h3>
+                            <div class="space-y-2 text-gray-600">
+                                <p><i class="ri-map-pin-line text-pink-700"></i> No.2/143,Anna Nagar,Opp to TMB
+                                    Bank,Regunathapuram</p>
+                                <p><i class="ri-phone-line text-pink-700"></i> (+91) 9345659720</p>
+                                <p><i class="ri-mail-line text-pink-700"></i> vetridentalclinic22@gmail.com</p>
+                            </div>
+                            <div class="space-y-2 text-gray-600">
+                                <p><i class="ri-time-line text-pink-700 text-xl"></i>Monday - Saturday: Morning
+                                    09:00 AM
+                                    - 02:00 PM, Evening 04:30 PM - 08:00 PM</p>
+                                <p><i class="ri-calendar-check-line text-pink-700 text-xl"></i> Sunday: Open only
+                                    for
+                                    Appoinment</p>
+                            </div>
+
+
+                            <!-- Visit Button -->
+                            <div class="mt-4">
+                                <a href="https://www.google.com/maps?q=No.2/143,+Anna+Nagar,+Opp+to+TMB+Bank,+Regunathapuram"
+                                    target="_blank"
+                                    class="inline-block bg-primary text-white px-8 py-2 rounded hover:bg-pink-700 transition duration-300">
+                                    Visit
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-gray-100 rounded-lg h-[600px] mb-8">
+                            <img src="map.png" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="flex justify-center">
+                            <button onclick="openAppointmentModal()"
+                                class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-pink-700 text-lg cursor-pointer whitespace-nowrap">
+                                Schedule an Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl text-primary font-['Pacifico'] mb-4 hover:text-pink-700  cursor-pointer">Vetri
+                        <span class="text-pink-700 hover:text-primary  cursor-pointer">Dental <span
+                                class="text-primary hover:text-pink-700  cursor-pointer">Clinic</span></span>
+                    </h3>
+                    <p class="text-white">Providing excellence in dental care since 2020.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 hover:text-pink-700  cursor-pointer">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white cursor-pointer">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white cursor-pointer">Services</a></li>
+                        <li><a href="#team" class="hover:text-white cursor-pointer">Our Team</a></li>
+                        <li><a href="#contact" class="hover:text-white cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 hover:text-pink-700 cursor-pointer">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/vdcRamanathapuram/" target="_blank"
+                            class="hover:text-pink-700 cursor-pointer">
+                            <i class="ri-facebook-fill ri-lg"></i>
+                        </a>
+                        <a href="https://wa.me/8667754551" target="_blank" class="hover:text-pink-700 cursor-pointer">
+                            <i class="ri-whatsapp-fill ri-lg"></i>
+                        </a>
+                        <a href="https://www.instagram.com/vetrisdentalstudio?igsh=MXVhYmhiMTNjMjlvNQ%3D%3D&utm_source=qr"
+                            target="_blank" class="hover:text-pink-700 cursor-pointer">
+                            <i class="ri-instagram-fill ri-lg"></i>
+                        </a>
+                        <a href="https://youtube.com/@vetrisdentalstudio5683?si=CXY54LrKsLU32DEw" target="_blank"
+                            class="hover:text-pink-700 cursor-pointer">
+                            <i class="ri-youtube-fill ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href=" https://youtube.com/@vetrisdentalstudio5683?si=CXY54LrKsLU32DEw" target="_blank"
+                        class="inline-block bg-primary text-white px-6 py-2 rounded-button hover:bg-pink-700 transition duration-300 cursor-pointer">
+                        Visit Vetri's YouTube Channel
+                    </a>
+                </div>
+
+                <!-- WhatsApp Button with Popup Message -->
+                <div class="fixed bottom-5 right-5 flex flex-col items-center z-50 group">
+
+                    <!-- Pop-up Message -->
+                    <div class="mb-2 px-3 py-1 bg-gray-800 text-white text-sm rounded-full 
+                    transform scale-0 group-hover:scale-100  hover:bg-pink-700 duration-300 ease-out shadow-md">
+                        Chat with me!
+                    </div>
+
+                    <!-- WhatsApp Icon -->
+                    <a href="https://wa.me/8667754551" target="_blank"
+                        class="bg-green-500 text-white p-4 rounded-full shadow-lg animate-bounce">
+                        <i class="ri-whatsapp-fill ri-xl"></i>
+                    </a>
+
+                </div>
+
+
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 Vetri Dental Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!--Appoinment-->
+    <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold text-primary">Book an Appointment</h3>
+                <button onclick="closeAppointmentModal()" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="ri-close-line ri-2x"></i>
+                </button>
+            </div>
+            <form id="appointmentForm" class="space-y-6" onsubmit="handleAppointmentSubmit(event)">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-primary font-semibold mb-2">Full Name</label>
+                        <input type="text" id="fullName" required name="fullName"
+                            class="w-full px-4 py-3 rounded-button border border-gray-300 text-base">
+                    </div>
+                    <div>
+                        <label class="block text-primary font-semibold mb-2">Email</label>
+                        <input type="email" id="email" required name="email"
+                            class="w-full px-4 py-3 rounded-button border border-gray-300 text-base">
+                    </div>
+                    <div>
+                        <label class="block text-primary font-semibold mb-2">Phone</label>
+                        <input type="tel" id="phoneNo" required name="phoneNo"
+                            class="w-full px-4 py-3 rounded-button border border-gray-300 text-base">
+                    </div>
+                    <div>
+                        <label class="block text-primary font-semibold mb-2">Preferred Date</label>
+                        <input type="date" id="preferredDate" required name="preferredDate"
+                            class="w-full px-4 py-3 rounded-button border border-gray-300 text-base">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-primary font-semibold mb-2">Service Type</label>
+                    <select id="serviceType" required name="serviceType"
+                        class="w-full px-4 py-3 rounded-button border border-gray-300 pr-8 text-base">
+                        <option value="">Select a service</option>
+                        <option value="general">General Dentistry</option>
+                        <option value="cosmetic">Cosmetic Dentistry</option>
+                        <option value="orthodontics">Orthodontics</option>
+                        <option value="implants">Dental Implants</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-primary font-semibold mb-2">Additional Notes</label>
+                    <textarea id="additionalNotes" name="additionalNotes"
+                        class="w-full px-4 py-3 rounded-button border border-gray-300 text-base" rows="4"></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-primary text-white py-3 !rounded-button hover:bg-pink-900 cursor-pointer whitespace-nowrap">
+                    Submit Request
+                </button>
+            </form>
+        </div>
+    </div>
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="ri-check-line text-green-500 ri-2x"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4">Thank You!</h3>
+            <p class="text-gray-600 mb-6">Your appointment request has been received. We'll contact you shortly to
+                confirm.</p>
+            <button onclick="closeSuccessModal()"
+                class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-pink-700 cursor-pointer whitespace-nowrap">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <!--JAVA SCRIPT-->
+    <script>
+
+        //Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+
+            // Delay for 2.5 seconds before hiding
+            setTimeout(() => {
+                loader.classList.add('opacity-0');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500); // extra fade-out time
+            }, 2500); // delay duration in ms
+        });
+
+
+        //Appointment
+        function openAppointmentModal() {
+            document.getElementById('appointmentModal').style.display = 'flex';
+        }
+        function closeAppointmentModal() {
+            document.getElementById('appointmentModal').style.display = 'none';
+        }
+        function openSuccessModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+        function handleAppointmentSubmit(event) {
+            event.preventDefault();
+            closeAppointmentModal();
+            openSuccessModal();
+            event.target.reset();
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('appointmentModal')) {
+                closeAppointmentModal();
+            }
+            if (event.target == document.getElementById('successModal')) {
+                closeSuccessModal();
+            }
+        }
+
+        //after before img
+        function openModal(title, description, beforeImgUrl = '', afterImgUrl = '') {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+
+            const modalImages = document.getElementById('modalImages');
+            const beforeImage = document.getElementById('beforeImage');
+            const afterImage = document.getElementById('afterImage');
+
+            if (beforeImgUrl && afterImgUrl) {
+                beforeImage.src = beforeImgUrl;
+                afterImage.src = afterImgUrl;
+                modalImages.classList.remove('hidden');
+            } else {
+                modalImages.classList.add('hidden');
+            }
+
+            document.getElementById('modalCard').classList.remove('hidden');
+            document.getElementById('modalBackdrop').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalCard').classList.add('hidden');
+            document.getElementById('modalBackdrop').classList.add('hidden');
+        }
+
+        //Java Script for Google  Sheet
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyp-bwR3Kbpj5-OkrqVTBQTedOTN6PYGq5haUOsifmlQEoZXXFsRp8Ttb0iL5qcJPrW/exec";
+
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+
+            const form = document.getElementById("appointmentForm");
+            const formData = new FormData(form);
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: formData,
+                mode: "no-cors"
+            })
+                .then(() => {
+                    alert("✅ Appointment request submitted successfully!");
+                    // Show success modal
+                    document.getElementById("appointmentModal").classList.add("hidden");
+                    document.getElementById("successModal").classList.remove("hidden");
+
+                    // Optional: Reset form
+                    form.reset();
+                })
+                .catch(err => {
+                    console.error("Error!", err);
+                    alert("❌ Error sending appointment data.");
+                });
+        }
+
+
+          // SpringBoot Connection
+        function getValue(id) {
+            const val = document.getElementById(id);
+            return val ? val.value : "";
+
+        }
+
+         async function handleAppointmentSubmit(event) {
+             event.preventDefault();
+             const form = event.target;
+
+
+            // 🔁 Build the JSON data properly
+            const data = {
+                fullName: getValue("fullName"),
+                 email: getValue("email"),
+                phoneNo: getValue("phoneNo"), // fixed typo
+                preferredDate: getValue("preferredDate"),
+                 serviceType: getValue("serviceType"), // removed space
+                 additionalNotes: getValue("additionalNotes")
+             };
+
+            // ✅ Send data to Spring Boot backend
+            try {
+               const response = await fetch("http://localhost:8080/insert", {
+                 method: "POST",
+                     headers: {
+                         "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                 if (response.ok) {
+                     closeAppointmentModal();
+                     openSuccessModal();
+                     form.reset();
+                 } else {
+                     alert("Something went wrong!");
+                 }
+             } catch (error) {
+                console.error("Error:", error);
+           alert("Failed to submit appointment.");
+             }
+         }
+
+    </script>
+</body>
+
+</html>
